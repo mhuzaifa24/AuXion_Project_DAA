@@ -3,8 +3,8 @@
 AuXion is a distributed auction platform where decentralized nodes bid, synchronize, and reach consensus in real time.
 
 # Group Members:
-Huzaifa Saleem   ---------
-Abdullah Asim    ---------
+Huzaifa Saleem   ----------------------------
+Abdullah Asim  
 
 
 # AuXion – Distributed Auction System
