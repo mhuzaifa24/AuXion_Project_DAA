@@ -4,6 +4,8 @@
 
 using namespace std;
 
+const int MAX_BIDDERS = 3;
+
 struct Item
 {
     string item_id;
