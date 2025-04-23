@@ -1,6 +1,10 @@
 #include "coordinator.h"
+
 int main()
 {
+
+    cout << "\n----------------------------------------------- Welcome to AuXion----------------------------------------------------\n\n";
+
     WSADATA wsaData;
     WSAStartup(MAKEWORD(2, 2), &wsaData);
 
@@ -25,11 +29,12 @@ int main()
 
     for (int i = 1; i <= MAX_BIDDERS; ++i) 
     {
-        cout << "[Coordinator] Waiting for Node " << i << "...\n";
+        cout << " \nWaiting for Node " << i << "...\n";
 
         sockaddr_in client_addr;
         int addrlen = sizeof(client_addr);
         SOCKET clientSocket = accept(server_fd, (sockaddr*)&client_addr, &addrlen);
+
 
         char buffer[1024] = { 0 };
         int valread = recv(clientSocket, buffer, sizeof(buffer), 0);
@@ -39,7 +44,7 @@ int main()
         }
 
         string msg(buffer);
-        cout << "[Coordinator] Received: " << msg << "\n";
+        cout << " Received :  " << msg << "\n";
 
         istringstream iss(msg);
         string nodeStr, label, bidVal;
@@ -47,11 +52,11 @@ int main()
         getline(iss, label, ':');
         getline(iss, bidVal);
 
-        int nodeNum = atoi(nodeStr.substr(4).c_str());  // "Node1" → 1
+        int nodeNum = atoi(nodeStr.substr(4).c_str());  
         int bid = atoi(bidVal.c_str());
         bids[nodeNum] = bid;
 
-        // Determine current leader
+        
         int leader = -1;
         int highest = -1;
         for (map<int, int>::const_iterator it = bids.begin(); it != bids.end(); ++it) {
@@ -61,7 +66,7 @@ int main()
             }
         }
 
-        string reply = "Bid received. Current leader: Node " + to_string(leader);
+        string reply = "Bid received.\t\t\t\t\tCurrent leader: Node " + to_string(leader);
         send(clientSocket, reply.c_str(), reply.length(), 0);
 
         closesocket(clientSocket);
@@ -85,5 +90,6 @@ int main()
 
     closesocket(server_fd);
     WSACleanup();
+   
     return 0;
 }
