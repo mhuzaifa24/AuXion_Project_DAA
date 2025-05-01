@@ -38,6 +38,12 @@ AuXion is a distributed computing project that simulates a decentralized auction
 
 ⬜ Converted from Centrilzed to Gull Time Peer to Peer Network.
 
+# Future Enhancement:
+        
+         ^ Multiple Round Bidding
+         ^ Leader Election in case of Coordinator Failure(Consensus Algorithm)
+         ^ UI/UX 
+
 # Note  :
 
    The code is valid on a devices having same LAN.
