@@ -13,38 +13,35 @@ AuXion is a distributed computing project that simulates a decentralized auction
 
 ---
 
-## Key Features
+# Execution Flow
 
-- **Multiple Distributed Nodes**: Simulated using multithreading (or processes) to represent bidders and coordinators.
-- **Distributed Bidding Protocol**: Bidders submit bids without relying on a centralized auctioneer.
-- **Leader Election**: Uses a consensus algorithm (e.g., **Bully Algorithm**) to elect a coordinator in case of failure.
-- **Fault Tolerance**: Handles node failures and re-elects coordinators when needed.
-- **Live Auction Monitoring**: Tracks real-time bidding and decision-making between nodes.
+1) Peer Discovery Phase :
+      * Node broadcast their presence using UDP on Port 9000 for 10 seconds.
+      * Each Node broadcsat braodcast as well as listen in a separate thread and build a network map with node IDS,IPs and Ports.
 
----
+2) TCP Connection Phase:
+      * Each node starts a TCP server on a port derived from its UDP port (e.g UDP 8001 -> TCP 9001)
+      * Node connect to each other as TCP clients forming peer_sockets
+        
+3) Role Selection:
+     
+     * The user selects a role:  Coordinator / Bidder
+       
+4) Auction Process:
+     * The auction starts as in phase 2 and the coordinator broadcast the winner at the end.
 
-## Execution Flow
-
- ** Bidding Phase:    Nodes submit their bids to the Auction Coordinator.
-
- ** Consensus:          Nodes agree on a leader (Auction Coordinator) via the consensus algorithm.
-
- ** Final Decision:   The Auction Coordinator processes the bids and determines the winning bid.
-
- ** Announcing Result:      The winning bid is shared with all nodes.
-
- ** Failure Handling:   If the coordinator or any node fails, a new leader is elected, and the auction 
 
 
 # AuXion: Distributed Auction System
 
-**Phase 2: 20% Implementation**
+**Phase 3: 90% Implementation**
 
-- ✅ Basic coordinator and bidder structure
-- ✅ Communication simulated via function calls
-- ✅ Coordinator initiates auction and receives bids
-- ⬜ Consensus algorithm (upcoming)
-- ⬜ Failure handling and election (upcoming)
+⬜ Converted from Centrilzed to Gull Time Peer to Peer Network.
+
+# Note  :
+
+   The code is valid on a devices having same LAN.
+
 
 ## Run
 ```bash
