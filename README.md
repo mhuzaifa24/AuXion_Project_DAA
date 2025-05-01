@@ -38,11 +38,11 @@ AuXion is a distributed computing project that simulates a decentralized auction
 
 # AuXion: Distributed Auction System
 
-**Phase 2: 20% Implementation**
+**Phase 1: 20% Implementation**
 
 - ✅ Basic coordinator and bidder structure
-- ✅ Communication simulated via function calls
-- ✅ Coordinator initiates auction and receives bids
+- ⬜ Communication simulated via function calls
+- ⬜Coordinator initiates auction and receives bids
 - ⬜ Consensus algorithm (upcoming)
 - ⬜ Failure handling and election (upcoming)
 
